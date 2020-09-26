@@ -4,7 +4,7 @@ This is the code for a GraphQL Server which wraps the [Petfinder API routes](htt
 The GraphQL schema was generated using the [openapi-to-graphql tool](https://github.com/IBM/openapi-to-graphql) along with the [Petfinder OpenAPI Specification](https://api.petfinder.com/openapi.yaml)
  
 # Usage
-To run this project, you'll need to get a Petfinder API Key and Secret so that you can authenticate with Petfinder. [Docs](https://www.petfinder.com/developers/v2/docs/#using-the-api)
+To run this project, you'll need to get a Petfinder API Key and Secret so that you can authenticate with Petfinder. [Petfinder Docs](https://www.petfinder.com/developers/v2/docs/#using-the-api)
 
 Once you have those you'll create a file called `api-keys.js` which exports your api key and secret from the root directory of this repo:
 ```
