@@ -14,6 +14,6 @@ const getAccessToken = async () => {
     }
   )
   const json = await petfinderRes.json()
-  return json.access_token
+  return json
 }
 export default getAccessToken
