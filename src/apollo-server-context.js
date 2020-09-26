@@ -1,6 +1,6 @@
 import NodeCache from 'node-cache'
-import fetchAccessToken from './get-access-token'
-
+import fetchAccessToken from './fetch-access-token'
+import fetch from 'isomorphic-unfetch'
 const PetfinderAccessTokenCache = new NodeCache()
 
 const TWO_MINUTES_IN_SECONDS = 60 * 2
@@ -19,6 +19,7 @@ const getAccessToken = async () => {
   )
   return json.access_token
 }
+
 const fetchPetfinderRoute = async url => {
   const accessToken = await getAccessToken()
   const res = await fetch(`https://api.petfinder.com/v2/${url}`, {

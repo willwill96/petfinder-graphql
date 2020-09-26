@@ -1,7 +1,7 @@
-const { petFinderKey, petFinderSecret } = require('../api-keys')
-const fetch = require('isomorphic-unfetch')
+import { petFinderKey, petFinderSecret } from '../api-keys'
+import fetch from 'isomorphic-unfetch'
 
-const getAccessToken = async () => {
+const fetchAccessToken = async () => {
   const params = new URLSearchParams()
   params.append('grant_type', 'client_credentials')
   params.append('client_id', petFinderKey)
@@ -16,4 +16,4 @@ const getAccessToken = async () => {
   const json = await petfinderRes.json()
   return json
 }
-export default getAccessToken
+export default fetchAccessToken

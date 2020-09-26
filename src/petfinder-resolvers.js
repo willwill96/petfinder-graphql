@@ -1,5 +1,4 @@
 import queryString from 'query-string'
-import getAccessToken from './get-access-token'
 
 const animals = async (_, args, { fetchPetfinderRoute }) => {
   return await fetchPetfinderRoute(
@@ -15,12 +14,7 @@ const animal = async (_, args, { fetchPetfinderRoute }) => {
 }
 
 const types = async (_, _a, { fetchPetfinderRoute }) => {
-  const accessToken = await getAccessToken()
-  return await fetchPetfinderRoute('types', {
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-    },
-  })
+  return await fetchPetfinderRoute('types')
 }
 
 const typeBreeds = async (_, args, { fetchPetfinderRoute }) => {
