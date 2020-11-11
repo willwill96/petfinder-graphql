@@ -10,17 +10,6 @@ To run this project, you'll need to get a Petfinder API Key and Secret so that y
 
 Once you have those you'll create a file called `api-keys.js` which exports your api key and secret from the root directory of this repo:
 
-```
-export const petFinderKey = 'yourPetfinderKey'
-export const petFinderSecret = 'yourPetfinderSecret'
-```
-
-Then you should be able to the run the application by running:
-
-```
-yarn install && yarn start
-```
-
 The graphql server is then available at `http://localhost:4000/graphql`, with the GraphQL playground enabled.
 
 There is also a Dockerfile that can be used to run the server, which you can use by running:
@@ -32,5 +21,5 @@ There is also a Dockerfile that can be used to run the server, which you can use
   ```
 
 ```
-- open browser to localhost:8080
+- open browser to localhost:8080/graphql
 ```
