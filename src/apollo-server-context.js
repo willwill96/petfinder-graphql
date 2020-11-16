@@ -1,5 +1,5 @@
 import NodeCache from 'node-cache'
-import fetchAccessToken from './fetch-access-token'
+import fetchAccessToken from './fetch-petfinder-access-token'
 import fetch from 'isomorphic-unfetch'
 const PetfinderAccessTokenCache = new NodeCache()
 
@@ -29,6 +29,21 @@ const fetchPetfinderRoute = async url => {
   })
   return await res.json()
 }
+const fetchTheDogAPIRoute = async url => {
+  if (!process.env['THE_DOG_API_KEY']) {
+    console.log(
+      'WARNING: No API Key set for The Dog API. Returning no results for breed information.'
+    )
+    return []
+  }
+  const res = await fetch(`https://api.TheDogAPI.com/v1/${url}`, {
+    headers: {
+      'x-api-key': process.env['THE_DOG_API_KEY'],
+    },
+  })
+  return await res.json()
+}
 export default {
   fetchPetfinderRoute,
+  fetchTheDogAPIRoute,
 }
