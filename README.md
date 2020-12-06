@@ -1,5 +1,5 @@
 ![Node CI Build](https://github.com/willwill96/petfinder-graphql/workflows/Node%20CI%20Build/badge.svg?branch=master)
-
+![Docker Pulls](https://img.shields.io/docker/pulls/wbw4sv/petfinder-graphql)
 # Petfinder GraphQL Server
 
 This is the code for a GraphQL Server which wraps the [Petfinder API routes](https://www.petfinder.com/developers/v2/docs).
