@@ -1,6 +1,11 @@
 import fetch from 'isomorphic-unfetch'
 
-const fetchAccessToken = async () => {
+type AccessToken = {
+  access_token: string
+  expires_in: number
+}
+
+const fetchAccessToken = async (): Promise<AccessToken> => {
   if (
     !process.env['PETFINDER_API_KEY'] ||
     !process.env['PETFINDER_SECRET_KEY']

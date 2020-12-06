@@ -4,10 +4,6 @@ import express from 'express'
 import petFinderSchema from './petfinder-schema'
 import petfinderApiContext from './petfinder-api-context'
 
-const introspectionEnabled = Boolean(
-  process.env['NODE_ENV'] === 'development' ||
-    process.env['INTROSPECTION_ENABLED']
-)
 const playgroundEnabled = Boolean(
   process.env['NODE_ENV'] === 'development' || process.env['PLAYGROUND_ENABLED']
 )
@@ -20,7 +16,7 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   context: petfinderApiContext,
-  introspection: introspectionEnabled,
+  introspection: playgroundEnabled,
   playground: playgroundEnabled,
 })
 const apolloApp = express()
