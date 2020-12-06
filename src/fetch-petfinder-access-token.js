@@ -1,6 +1,14 @@
 import fetch from 'isomorphic-unfetch'
 
 const fetchAccessToken = async () => {
+  if (
+    !process.env['PETFINDER_API_KEY'] ||
+    !process.env['PETFINDER_SECRET_KEY']
+  ) {
+    throw Error(
+      'Petfinder API Keys not found. Please contact an administrator for more information.'
+    )
+  }
   const params = new URLSearchParams()
   params.append('grant_type', 'client_credentials')
   params.append('client_id', process.env['PETFINDER_API_KEY'])

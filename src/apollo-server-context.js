@@ -29,21 +29,7 @@ const fetchPetfinderRoute = async url => {
   })
   return await res.json()
 }
-const fetchTheDogAPIRoute = async url => {
-  if (!process.env['THE_DOG_API_KEY']) {
-    console.log(
-      'WARNING: No API Key set for The Dog API. Returning no results for breed information.'
-    )
-    return []
-  }
-  const res = await fetch(`https://api.TheDogAPI.com/v1/${url}`, {
-    headers: {
-      'x-api-key': process.env['THE_DOG_API_KEY'],
-    },
-  })
-  return await res.json()
-}
+
 export default {
   fetchPetfinderRoute,
-  fetchTheDogAPIRoute,
 }
