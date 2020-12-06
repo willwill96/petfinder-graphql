@@ -1,3 +1,4 @@
+![Node CI](https://github.com/willwill96/petfinder-graphql/workflows/Node.js%20CI/badge.svg)
 # Petfinder GraphQL Server
 
 This is the code for a GraphQL Server which wraps the [Petfinder API routes](https://www.petfinder.com/developers/v2/docs).
