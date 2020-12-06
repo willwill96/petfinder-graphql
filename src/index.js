@@ -13,12 +13,20 @@ const resolvers = {
   },
 }
 
+const introspectionEnabled = Boolean(
+  process.env['NODE_ENV'] === 'development' ||
+    process.env['INTROSPECTION_ENABLED']
+)
+const playgroundEnabled = Boolean(
+  process.env['NODE_ENV'] === 'development' || process.env['PLAYGROUND_ENABLED']
+)
+
 const server = new ApolloServer({
   typeDefs: petfinderTypeDefs,
   resolvers,
   context: apolloServerContext,
-  introspection: true,
-  playground: true,
+  introspection: introspectionEnabled,
+  playground: playgroundEnabled,
 })
 const apolloApp = express()
 
