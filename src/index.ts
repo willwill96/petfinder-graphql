@@ -11,6 +11,10 @@ const introspectionEnabled = Boolean(
 const playgroundEnabled = Boolean(
   process.env['NODE_ENV'] === 'development' || process.env['PLAYGROUND_ENABLED']
 )
+
+const port = process.env['PETFINDER_GRAPHQL_PORT'] || 4000
+const path = process.env['PETFINDER_GRAPHQL_PATH'] || '/graphql'
+
 const { typeDefs, resolvers } = petFinderSchema
 const server = new ApolloServer({
   typeDefs,
@@ -23,7 +27,7 @@ const apolloApp = express()
 
 server.applyMiddleware({
   app: apolloApp,
-  path: '/graphql',
+  path: path,
 })
 
-apolloApp.listen(4000)
+apolloApp.listen(port)

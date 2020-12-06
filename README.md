@@ -4,9 +4,9 @@ This is the code for a GraphQL Server which wraps the [Petfinder API routes](htt
 
 The GraphQL schema was generated using the [openapi-to-graphql tool](https://github.com/IBM/openapi-to-graphql) along with the [Petfinder OpenAPI Specification](https://api.petfinder.com/openapi.yaml)
 
-# Pre-requisites
+# Configuration
 
-## Petfinder API
+## Petfinder API Key (Required)
 
 To run this project, you'll need to get a Petfinder API Key and Secret so that you can authenticate with Petfinder. [Petfinder Docs](https://www.petfinder.com/developers/v2/docs/#using-the-api)
 
@@ -19,16 +19,19 @@ PETFINDER_API_KEY={yourPetfinderAPIKey}
 PETFINDER_SECRET_KEY=${yourPetfinderSecretKey}
 ```
 
-# Usage (Docker)
+## Optional Configuration
 
-There is a Dockerfile that can be used to build and run the server, which you can use with the command:
+The following environment variables can be set to adjust the configuration:
+
+- PLAYGROUND_ENABLED (default: `false`): If truthy, the server hosts [GraphQL Playground](https://www.apollographql.com/docs/apollo-server/testing/graphql-playground/) from its URL.
+- PETFINDER_GRAPHQL_PORT (default: `4000`): Sets the port the server will be hosted on
+- PETFINDER_GRAPHQL_PATH (default: `/graphql`): Sets the path the server will be hosted on
+
+# Usage (Docker)
 
 - `docker build -t ${name} .`
 - ```
-  docker run -e PETFINDER_API_KEY={yourPetfinderAPIKey} -e PETFINDER_SECRET_KEY=${yourPetfinderSecretKey} -e THE_DOG_API_KEY=${yourTheDogAPIKey} -v
+  docker run -e PETFINDER_API_KEY={yourPetfinderAPIKey} -e PETFINDER_SECRET_KEY=${yourPetfinderSecretKey} -v
    ${local_app_directory}:/usr/src/app -p 8080:4000 {name}
   ```
-
-```
 - open browser to localhost:8080/graphql
-```
