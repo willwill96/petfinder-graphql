@@ -6,7 +6,7 @@ const fetchAccessToken = async () => {
     !process.env['PETFINDER_SECRET_KEY']
   ) {
     throw Error(
-      'Petfinder API Keys not found. Please contact an administrator for more information.'
+      'Petfinder API Keys not found. Please contact an administrator for more assistance.'
     )
   }
   const params = new URLSearchParams()

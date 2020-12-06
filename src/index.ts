@@ -1,17 +1,8 @@
 import { ApolloServer } from 'apollo-server-express'
 import express from 'express'
 
-import petfinderTypeDefs from './petfinder-type-defs'
-import enumAliasResolvers from './enum-alias-resolvers'
-import petFinderResolvers from './petfinder-resolvers'
-import apolloServerContext from './apollo-server-context'
-
-const resolvers = {
-  ...enumAliasResolvers,
-  Query: {
-    ...petFinderResolvers.Query,
-  },
-}
+import petFinderSchema from './petfinder-schema'
+import petfinderApiContext from './petfinder-api-context'
 
 const introspectionEnabled = Boolean(
   process.env['NODE_ENV'] === 'development' ||
@@ -20,11 +11,11 @@ const introspectionEnabled = Boolean(
 const playgroundEnabled = Boolean(
   process.env['NODE_ENV'] === 'development' || process.env['PLAYGROUND_ENABLED']
 )
-
+const { typeDefs, resolvers } = petFinderSchema
 const server = new ApolloServer({
-  typeDefs: petfinderTypeDefs,
+  typeDefs,
   resolvers,
-  context: apolloServerContext,
+  context: petfinderApiContext,
   introspection: introspectionEnabled,
   playground: playgroundEnabled,
 })

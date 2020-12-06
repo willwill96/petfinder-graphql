@@ -10,21 +10,13 @@ The GraphQL schema was generated using the [openapi-to-graphql tool](https://git
 
 To run this project, you'll need to get a Petfinder API Key and Secret so that you can authenticate with Petfinder. [Petfinder Docs](https://www.petfinder.com/developers/v2/docs/#using-the-api)
 
+NOTE: By using this software, you must comply with the [Petfinder API Terms of Service](https://www.petfinder.com/api-terms-of-service/)
+
 Set your environment variables as follows:
 
 ```
 PETFINDER_API_KEY={yourPetfinderAPIKey}
 PETFINDER_SECRET_KEY=${yourPetfinderSecretKey}
-```
-
-## The Dog API (Optional)
-
-If you want the `breedInformation` resolver to work, you'll need an API key for [The Dog API](https://thedogapi.com/), which you can get from their website.
-
-Set your environment variables as follows:
-
-```
-THE_DOG_API_KEY=${yourTheDogAPIKey}
 ```
 
 # Usage (Docker)
