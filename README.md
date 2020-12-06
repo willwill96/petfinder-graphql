@@ -1,13 +1,14 @@
 ![Node CI Build](https://github.com/willwill96/petfinder-graphql/workflows/Node%20CI%20Build/badge.svg?branch=master)
+
 # Petfinder GraphQL Server
 
 This is the code for a GraphQL Server which wraps the [Petfinder API routes](https://www.petfinder.com/developers/v2/docs).
 
 The GraphQL schema was generated using the [openapi-to-graphql tool](https://github.com/IBM/openapi-to-graphql) along with the [Petfinder OpenAPI Specification](https://api.petfinder.com/openapi.yaml)
 
-# Configuration
+## Configuration
 
-## Petfinder API Key (Required)
+### Petfinder API Key (Required)
 
 To run this project, you'll need to get a Petfinder API Key and Secret so that you can authenticate with Petfinder. [Petfinder Docs](https://www.petfinder.com/developers/v2/docs/#using-the-api)
 
@@ -20,7 +21,7 @@ PETFINDER_API_KEY={yourPetfinderAPIKey}
 PETFINDER_SECRET_KEY=${yourPetfinderSecretKey}
 ```
 
-## Optional Configuration
+### Optional Configuration
 
 The following environment variables can be set to adjust the configuration:
 
@@ -28,7 +29,37 @@ The following environment variables can be set to adjust the configuration:
 - PETFINDER_GRAPHQL_PORT (default: `4000`): Sets the port the server will be hosted on
 - PETFINDER_GRAPHQL_PATH (default: `/graphql`): Sets the path the server will be hosted on
 
-# Usage (Docker)
+## Example Usage
+
+### Docker (From Docker Hub)
+
+```
+docker pull wbw4sv/petfinder-graphql:latest
+docker run -e PETFINDER_API_KEY={yourPetfinderAPIKey} -e PETFINDER_SECRET_KEY=${yourPetfinderSecretKey} -p -d 4000:4000 wbw4sv/petfinder-graphql
+```
+
+### Docker Compose (From Docker Hub)
+Example docker-compose.yml
+```
+version: "3"
+
+services:
+  petfinder-graphql:
+    image: wbw4sv/petfinder-graphql
+    container_name: petfinder-graphql
+    ports:
+      - 4000:4000
+    restart: always
+    environment:
+      - PETFINDER_API_KEY=${PETFINDER_API_KEY}
+      - PETFINDER_SECRET_KEY=${PETFINDER_SECRET_KEY}
+      - PLAYGROUND_ENABLED=true
+...
+```
+
+### Docker (locally)
+
+If you have the repo cloned locally you can run the following commands:
 
 - `docker build -t ${name} .`
 - ```
