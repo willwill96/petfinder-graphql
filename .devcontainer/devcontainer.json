@@ -14,7 +14,11 @@
   "settings": {
     "terminal.integrated.shell.linux": "/bin/bash"
   },
-
+  "containerEnv": {
+    "PETFINDER_API_KEY": "${localEnv:PETFINDER_API_KEY}",
+    "PETFINDER_SECRET_KEY": "${localEnv:PETFINDER_SECRET_KEY}",
+    "PLAYGROUND_ENABLED": "${localEnv:PLAYGROUND_ENABLED}"
+  },
   // Add the IDs of extensions you want installed when the container is created.
   "extensions": ["dbaeumer.vscode-eslint"],
 
