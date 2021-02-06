@@ -29,10 +29,10 @@ type Animal {
   description: String
   environment: Environment
   gender: String
-  id: Int
+  id: ID
   links: Links3
   name: String
-  organizationId: String
+  organization: Organization
   photos: [Photo]
   publishedAt: String
   size: String
@@ -43,6 +43,9 @@ type Animal {
   tags: [String]
   type: String
   url: String
+
+  """Distance in miles to location provided in query. Null if not provided"""
+  distance: Float
 }
 
 type AnimalBreed {
@@ -161,7 +164,7 @@ type Organization {
   adoption: Adoption
   email: String
   hours: Hours
-  id: String
+  id: ID
   links: Links5
   missionStatement: String
   name: String
@@ -170,6 +173,9 @@ type Organization {
   socialMedia: SocialMedia
   url: String
   website: String
+
+  """Distance in miles to location provided in query. Null if not provided"""
+  distance: Float
 }
 
 type Organizations {
@@ -200,7 +206,7 @@ type Query {
   """
   animal(
     """Animal ID"""
-    id: Int!
+    id: ID!
   ): Animal
 
   """
@@ -264,7 +270,7 @@ type Query {
   """
   organization(
     """Organization ID"""
-    id: String!
+    id: ID!
   ): Organization
 
   """

@@ -46,10 +46,10 @@ export type Animal = {
   description: Maybe<Scalars['String']>
   environment: Maybe<Environment>
   gender: Maybe<Scalars['String']>
-  id: Maybe<Scalars['Int']>
+  id: Maybe<Scalars['ID']>
   links: Maybe<Links3>
   name: Maybe<Scalars['String']>
-  organizationId: Maybe<Scalars['String']>
+  organization: Maybe<Organization>
   photos: Maybe<Array<Maybe<Photo>>>
   publishedAt: Maybe<Scalars['String']>
   size: Maybe<Scalars['String']>
@@ -59,6 +59,8 @@ export type Animal = {
   tags: Maybe<Array<Maybe<Scalars['String']>>>
   type: Maybe<Scalars['String']>
   url: Maybe<Scalars['String']>
+  /** Distance in miles to location provided in query. Null if not provided */
+  distance: Maybe<Scalars['Float']>
 }
 
 export type AnimalBreed = {
@@ -177,7 +179,7 @@ export type Organization = {
   adoption: Maybe<Adoption>
   email: Maybe<Scalars['String']>
   hours: Maybe<Hours>
-  id: Maybe<Scalars['String']>
+  id: Maybe<Scalars['ID']>
   links: Maybe<Links5>
   missionStatement: Maybe<Scalars['String']>
   name: Maybe<Scalars['String']>
@@ -186,6 +188,8 @@ export type Organization = {
   socialMedia: Maybe<SocialMedia>
   url: Maybe<Scalars['String']>
   website: Maybe<Scalars['String']>
+  /** Distance in miles to location provided in query. Null if not provided */
+  distance: Maybe<Scalars['Float']>
 }
 
 export type Organizations = {
@@ -254,7 +258,7 @@ export type Query = {
 }
 
 export type QueryAnimalArgs = {
-  id: Scalars['Int']
+  id: Scalars['ID']
 }
 
 export type QueryAnimalsArgs = {
@@ -276,7 +280,7 @@ export type QueryAnimalsArgs = {
 }
 
 export type QueryOrganizationArgs = {
-  id: Scalars['String']
+  id: Scalars['ID']
 }
 
 export type QueryOrganizationsArgs = {

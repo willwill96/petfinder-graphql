@@ -35,10 +35,10 @@ const typeDefs = gql`
     description: String
     environment: Environment
     gender: String
-    id: Int
+    id: ID
     links: Links3
     name: String
-    organizationId: String
+    organization: Organization
     photos: [Photo]
     publishedAt: String
     size: String
@@ -51,6 +51,11 @@ const typeDefs = gql`
     tags: [String]
     type: String
     url: String
+
+    """
+    Distance in miles to location provided in query. Null if not provided
+    """
+    distance: Float
   }
 
   type AnimalBreed {
@@ -173,7 +178,7 @@ const typeDefs = gql`
     adoption: Adoption
     email: String
     hours: Hours
-    id: String
+    id: ID
     links: Links5
     missionStatement: String
     name: String
@@ -182,6 +187,11 @@ const typeDefs = gql`
     socialMedia: SocialMedia
     url: String
     website: String
+
+    """
+    Distance in miles to location provided in query. Null if not provided
+    """
+    distance: Float
   }
 
   type Organizations {
@@ -214,7 +224,7 @@ const typeDefs = gql`
       """
       Animal ID
       """
-      id: Int!
+      id: ID!
     ): Animal
 
     """
@@ -308,7 +318,7 @@ const typeDefs = gql`
       """
       Organization ID
       """
-      id: String!
+      id: ID!
     ): Organization
 
     """

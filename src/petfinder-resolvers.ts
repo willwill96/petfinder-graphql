@@ -9,18 +9,35 @@ import {
   Types,
 } from '../index'
 
-const animals = async (_, args, { fetchPetfinderRoute }): Promise<Animals> => {
-  return await fetchPetfinderRoute(
+const animals = async (_, args, context): Promise<Animals> => {
+  const { fetchPetfinderRoute } = context
+  const res = await fetchPetfinderRoute(
     `animals?${queryString.stringify(args, {
       arrayFormat: 'comma',
     })}`
   )
+  const { animals, ...rest } = res
+  return {
+    ...rest,
+    animals: animals.map(animal => {
+      const { organization_id, ...rest } = animal
+      return {
+        ...rest,
+        organization: () => organization({}, { id: organization_id }, context),
+      }
+    }),
+  }
 }
 
-const animal = async (_, args, { fetchPetfinderRoute }): Promise<Animal> => {
+const animal = async (_, args, context): Promise<Animal> => {
+  const { fetchPetfinderRoute } = context
   const { id } = args
   const res = await fetchPetfinderRoute(`animals/${id}`)
-  return res.animal
+  const { organization_id, ...rest } = res.animal
+  return {
+    ...rest,
+    organization: () => organization({}, { id: organization_id }, context),
+  }
 }
 
 const types = async (_, _a, { fetchPetfinderRoute }): Promise<Types> => {
@@ -58,7 +75,6 @@ const organization = async (
 ): Promise<Organization> => {
   const { id } = args
   const res = await fetchPetfinderRoute(`organizations/${id}`)
-
   return res.organization
 }
 export default {
