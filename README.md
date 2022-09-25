@@ -1,3 +1,6 @@
+# Deprecation Notice
+The contents of this repo have been moved to [petfinder-api-apps](https://github.com/willwill96/petfinder-api-apps)
+
 ![Node CI Build](https://github.com/willwill96/petfinder-graphql/workflows/Node%20CI%20Build/badge.svg?branch=master)
 [![Docker Pulls](https://img.shields.io/docker/pulls/wbw4sv/petfinder-graphql)](https://hub.docker.com/repository/docker/wbw4sv/petfinder-graphql "View on Docker Hub")
 # Petfinder GraphQL Server
